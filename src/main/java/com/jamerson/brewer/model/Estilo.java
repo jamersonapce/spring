@@ -12,20 +12,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "estilo")
-public class Estilo implements Serializable{
+public class Estilo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String nome;
-	
+
 	@OneToMany(mappedBy = "estilo")
 	private List<Cerveja> cervejas;
 
 	public Long getCodigo() {
 		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNome() {
@@ -34,6 +38,14 @@ public class Estilo implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Cerveja> getCervejas() {
+		return cervejas;
+	}
+
+	public void setCervejas(List<Cerveja> cervejas) {
+		this.cervejas = cervejas;
 	}
 
 	@Override
